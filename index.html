@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  STEP 1 — What is DOCTYPE?
+  ============================================================
+  Every HTML file MUST start with <!DOCTYPE html>.
+  It tells the browser: "Hey, this is a modern HTML5 page."
+  Without this, browsers can behave unexpectedly.
+-->
+
+<html lang="en">
+<!--
+  The <html> tag is the ROOT (container) of the entire page.
+  lang="en" tells search engines and screen readers this page is in English.
+-->
+
+<head>
+  <!--
+    ============================================================
+    THE <head> SECTION
+    ============================================================
+    The <head> is NOT visible on the page. It contains
+    instructions FOR the browser — like the page title,
+    which CSS file to use, and other settings.
+  -->
+
+  <!-- charset="UTF-8" means the page supports all characters
+       including emojis, accents, and international text -->
+  <meta charset="UTF-8" />
+
+  <!-- This makes the page work properly on phones and tablets.
+       Without it, mobile devices zoom out and the page looks tiny. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: Describes your page for Google and other search engines -->
+  <meta name="description" content="Personal portfolio of [Your Name] — Computer Science student and aspiring developer." />
+
+  <!-- The text that appears on the browser tab -->
+  <title>My Portfolio | [Your Name]</title>
+
+  <!-- Google Fonts: We load a nice font called "Inter" from the internet.
+       Think of this like downloading a font so the page looks clean. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- This links our EXTERNAL CSS file.
+       rel="stylesheet" means "this is a style file" 
+       href="css/style.css" is the path to our file -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!--
+    ============================================================
+    THE <body> SECTION
+    ============================================================
+    Everything the user SEES and INTERACTS WITH goes inside <body>.
+    We use semantic HTML tags — tags whose names describe their purpose.
+    This is better for accessibility and search engines.
+  -->
+
+
+  <!-- =========================================================
+       SECTION 1: NAVIGATION BAR
+       =========================================================
+       <nav> is a semantic tag meaning "navigation area".
+       It holds the links that let users jump to sections of the page.
+  -->
+  <nav class="navbar" id="navbar">
+    <!-- The brand/logo on the left -->
+    <div class="nav-brand">
+      <a href="#home">&lt;YourName /&gt;</a>
+    </div>
+
+    <!-- Hamburger icon — shown on mobile only, hidden on desktop.
+         When clicked, it toggles the mobile menu open/closed.
+         aria-label makes it accessible for screen readers.
+         aria-expanded tracks open/closed state for accessibility. -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- The list of navigation links -->
+    <ul class="nav-links" id="nav-links">
+      <!-- Each <li> is a list item. The <a> is a link.
+           href="#home" means "jump to the element with id='home'" -->
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- =========================================================
+       SECTION 2: HERO / HOME SECTION
+       =========================================================
+       This is the FIRST thing visitors see — the "hero" section.
+       id="home" connects to the nav link href="#home".
+  -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <!-- A small label above the name -->
+      <p class="hero-greeting">👋 Hello, World! I'm</p>
+
+      <!-- Your name — the most important heading on the page.
+           There should only be ONE <h1> per page (SEO best practice). -->
+      <h1 class="hero-name">[Your Name]</h1>
+
+      <!-- A subtitle describing who you are -->
+      <p class="hero-tagline">
+        Computer Science Student &amp; Aspiring Developer
+      </p>
+
+      <!-- A short bio -->
+      <p class="hero-description">
+        I love building things for the web. Currently learning the fundamentals
+        of programming and exploring the world of software development.
+        Welcome to my little corner of the internet!
+      </p>
+
+      <!-- Call-to-action buttons -->
+      <div class="hero-buttons">
+        <!-- Smooth scrolls to the Projects section -->
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <!-- Smooth scrolls to Contact -->
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+
+    <!-- Animated decorative circle behind the content -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-circle"></div>
+      <div class="floating-card card-1">HTML</div>
+      <div class="floating-card card-2">CSS</div>
+      <div class="floating-card card-3">JS</div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       SECTION 3: ABOUT ME
+       =========================================================
+       Tell visitors who you are, your skills, and your interests.
+  -->
+  <section class="about" id="about">
+    <!-- Section header — we reuse this pattern for every section -->
+    <div class="section-header">
+      <span class="section-label">Get to know me</span>
+      <h2>About Me</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="about-content">
+      <!-- Left column: Text about you -->
+      <div class="about-text">
+        <p>
+          Hi! I'm <strong>[Your Name]</strong>, a first-year Computer Science student with a
+          passion for creating things. I started coding [how long ago] and I've been
+          hooked ever since.
+        </p>
+        <p>
+          When I'm not studying, you can find me [your hobbies — e.g., playing chess,
+          watching sci-fi films, or hiking]. I believe that great software is built
+          with curiosity and persistence.
+        </p>
+        <p>
+          I'm currently focused on learning the fundamentals: HTML, CSS, JavaScript,
+          and Python. My goal is to build real-world projects that solve real problems.
+        </p>
+
+        <!-- Fun facts list -->
+        <ul class="fun-facts">
+          <li>📍 Based in [Your City, Country]</li>
+          <li>🎓 Studying at [Your University]</li>
+          <li>💡 Currently learning: JavaScript & Python</li>
+          <li>🎯 Goal: Full-Stack Developer</li>
+        </ul>
+      </div>
+
+      <!-- Right column: Skills -->
+      <div class="about-skills">
+        <h3>My Skills</h3>
+
+        <!-- Each skill-bar shows a technology and a visual progress bar.
+             The data-level attribute stores a percentage — JavaScript reads
+             this and animates the bar to that width (see script.js). -->
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">HTML</span>
+            <span class="skill-percent">80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" data-level="80"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">CSS</span>
+            <span class="skill-percent">65%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" data-level="65"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">JavaScript</span>
+            <span class="skill-percent">40%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" data-level="40"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Python</span>
+            <span class="skill-percent">50%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" data-level="50"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       SECTION 4: PROJECTS
+       =========================================================
+       Showcase your work. Each project is a "card" in a grid layout.
+  -->
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <span class="section-label">What I've built</span>
+      <h2>My Projects</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- CSS Grid will arrange these cards automatically.
+         On desktop: 3 per row. On tablet: 2. On mobile: 1. -->
+    <div class="projects-grid">
+
+      <!-- PROJECT CARD 1 -->
+      <article class="project-card">
+        <!-- project-card-top holds the icon/image area -->
+        <div class="project-card-top">
+          <div class="project-icon">🧮</div>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h3>Calculator App</h3>
+          <p>A fully functional calculator built with vanilla JavaScript. Supports basic arithmetic operations with a clean, responsive UI.</p>
+        </div>
+        <div class="project-card-footer">
+          <!-- Replace # with your actual GitHub repo link when you have one -->
+          <a href="#" class="btn btn-sm btn-ghost" aria-label="View Calculator App on GitHub">GitHub</a>
+          <a href="#" class="btn btn-sm btn-primary" aria-label="View Calculator App live demo">Live Demo</a>
+        </div>
+      </article>
+
+      <!-- PROJECT CARD 2 -->
+      <article class="project-card">
+        <div class="project-card-top">
+          <div class="project-icon">📝</div>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h3>To-Do List App</h3>
+          <p>A simple task management application where you can add, complete, and delete tasks. Saves data to the browser's local storage.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="#" class="btn btn-sm btn-ghost" aria-label="View To-Do List on GitHub">GitHub</a>
+          <a href="#" class="btn btn-sm btn-primary" aria-label="View To-Do List live demo">Live Demo</a>
+        </div>
+      </article>
+
+      <!-- PROJECT CARD 3 -->
+      <article class="project-card">
+        <div class="project-card-top">
+          <div class="project-icon">🌦️</div>
+          <div class="project-tags">
+            <span class="tag">JS</span>
+            <span class="tag">API</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h3>Weather Dashboard</h3>
+          <p>A weather app that fetches real-time data from an API and displays current conditions and a 5-day forecast for any city.</p>
+        </div>
+        <div class="project-card-footer">
+          <a href="#" class="btn btn-sm btn-ghost" aria-label="View Weather Dashboard on GitHub">GitHub</a>
+          <a href="#" class="btn btn-sm btn-primary" aria-label="View Weather Dashboard live demo">Live Demo</a>
+        </div>
+      </article>
+
+    </div><!-- end .projects-grid -->
+  </section>
+
+
+  <!-- =========================================================
+       SECTION 5: CONTACT
+       =========================================================
+       Let people reach you. We use a <form> element.
+       Note: Without a backend server, this form won't actually
+       send emails. You'll learn how to connect it later,
+       or use a free service like Formspree.io.
+  -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <span class="section-label">Let's talk</span>
+      <h2>Get In Touch</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="contact-wrapper">
+      <!-- Left side: Contact info -->
+      <div class="contact-info">
+        <p class="contact-intro">
+          I'm always open to new opportunities, collaborations, or just a friendly
+          conversation. Feel free to reach out!
+        </p>
+
+        <!-- Contact details list -->
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <div>
+              <strong>Email</strong>
+              <!-- Replace with your actual email -->
+              <a href="mailto:youremail@example.com">youremail@example.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">🐙</span>
+            <div>
+              <strong>GitHub</strong>
+              <!-- Replace with your GitHub profile URL -->
+              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">💼</span>
+            <div>
+              <strong>LinkedIn</strong>
+              <!-- Replace with your LinkedIn URL -->
+              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourusername</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Contact form -->
+      <form class="contact-form" id="contact-form" novalidate>
+        <!--
+          Each form field has three parts:
+          1. <label> — the visible text label ("Your Name")
+          2. <input> — the actual field the user types in
+          3. The "for" on label and "id" on input must MATCH
+             — this links them so clicking the label focuses the input.
+        -->
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="e.g. Alex Johnson"
+            required
+            autocomplete="name"
+          />
+          <!-- Error message shown by JavaScript if field is empty -->
+          <span class="form-error" id="name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="e.g. alex@example.com"
+            required
+            autocomplete="email"
+          />
+          <span class="form-error" id="email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Hi! I'd like to talk about..."
+            required
+          ></textarea>
+          <span class="form-error" id="message-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">
+          Send Message 🚀
+        </button>
+
+        <!-- Success/error feedback shown after submission -->
+        <div class="form-feedback" id="form-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       FOOTER
+       =========================================================
+       <footer> is a semantic tag for the bottom of the page.
+       It usually has copyright info, social links, and a note.
+  -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-brand">&lt;YourName /&gt;</p>
+      <p class="footer-copy">
+        <!-- &copy; renders the © symbol. New Date().getFullYear()
+             in JS automatically gets the current year. -->
+        &copy; <span id="year"></span> [Your Name]. Built with ❤️ using HTML, CSS &amp; JS.
+      </p>
+
+      <!-- Social links in footer -->
+      <div class="footer-links">
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a>
+        <a href="mailto:youremail@example.com" aria-label="Send Email">Email</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--
+    We load JavaScript at the BOTTOM of <body>, not in <head>.
+    WHY? Because the browser reads HTML top-to-bottom.
+    If JS loaded in <head>, it would run BEFORE the HTML elements
+    exist, causing errors. Putting it at the bottom ensures all
+    elements are loaded first, then JS runs.
+  -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
