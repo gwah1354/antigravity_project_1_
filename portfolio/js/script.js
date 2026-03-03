@@ -324,8 +324,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const feedback = document.querySelector('#form-feedback');
     if (!form) return;
 
+    // =========================================================
+    // SUPABASE INITIALIZATION
+    // =========================================================
+    // These credentials allow your website to connect to your
+    // Supabase project and insert data into the "messages" table.
+    const SUPABASE_URL = "https://rjyutkewkohrttxklwil.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqeXV0a2V3a29ocnR0eGtsd2lsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1NDcyODYsImV4cCI6MjA4ODEyMzI4Nn0.cYeKYo2n1JqNw6h9cV6oVt5hHE1QSY1qd3xjHEJBqYI";
+
+    // Create the Supabase client (only done once)
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log('✅ Supabase client initialized');
+
     // "submit" event fires when the user clicks the submit button
-    form.addEventListener('submit', function (event) {
+    // Using async function so we can use await for database operations
+    form.addEventListener('submit', async function (event) {
       // Prevent the default behavior (which would reload the page)
       event.preventDefault();
 
@@ -361,28 +374,41 @@ document.addEventListener('DOMContentLoaded', function () {
         hasErrors = true;
       }
 
-      // If there are errors, stop here
+      // If there are errors, stop here (validation preserved ✓)
       if (hasErrors) return;
 
-      // --- Simulate sending the form ---
-      // In a real project, you'd use fetch() to POST to a server.
-      // Here we just disable the button and show a success message.
+      // --- REAL SUPABASE SUBMISSION ---
       const submitBtn = form.querySelector('[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
-      // setTimeout simulates a network delay (1.5 seconds)
-      setTimeout(function () {
-        // Reset the form (clear all fields)
-        form.reset();
+      try {
+        // Insert data into Supabase "messages" table
+        const { data, error } = await supabase
+          .from('messages')
+          .insert([
+            {
+              name: nameInput.value.trim(),
+              email: emailInput.value.trim(),
+              message: messageInput.value.trim()
+              // created_at is handled automatically by Supabase default
+            }
+          ]);
 
-        // Show success message
-        if (feedback) {
-          feedback.className = 'form-feedback success';
-          feedback.textContent = '✅ Message sent! (Demo mode — connect Formspree to send real emails.)';
+        // Check if Supabase returned an error
+        if (error) {
+          throw error;
         }
 
-        // Re-enable the button after 4 seconds
+        // SUCCESS: Message was saved to database
+        form.reset();
+
+        if (feedback) {
+          feedback.className = 'form-feedback success';
+          feedback.textContent = '✅ Message sent! I\'ll get back to you soon.';
+        }
+
+        // Re-enable button and clear feedback after 4 seconds
         setTimeout(function () {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message 🚀';
@@ -392,7 +418,21 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }, 4000);
 
-      }, 1500);
+      } catch (error) {
+        // ERROR: Something went wrong (network issue, database error, etc.)
+        console.error('❌ Error submitting form:', error);
+        console.error('Error details:', error.message || error);
+
+        // Show error message to user
+        if (feedback) {
+          feedback.className = 'form-feedback error';
+          feedback.textContent = '❌ Failed to send message. Please try again.';
+        }
+
+        // Re-enable the submit button so user can retry
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message 🚀';
+      }
     });
 
     // --- Helper Functions ---
