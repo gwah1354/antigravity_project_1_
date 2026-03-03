@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
      ============================================================ */
   function initMobileMenu() {
     const hamburger = document.querySelector('#hamburger');
-    const navLinks  = document.querySelector('#nav-links');
+    const navLinks = document.querySelector('#nav-links');
 
     if (!hamburger || !navLinks) return;
 
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
      a real email service like Formspree (formspree.io).
      ============================================================ */
   function initContactForm() {
-    const form     = document.querySelector('#contact-form');
+    const form = document.querySelector('#contact-form');
     const feedback = document.querySelector('#form-feedback');
     if (!form) return;
 
@@ -333,8 +333,8 @@ document.addEventListener('DOMContentLoaded', function () {
       clearErrors();
 
       // Get references to the input elements
-      const nameInput    = document.querySelector('#name');
-      const emailInput   = document.querySelector('#email');
+      const nameInput = document.querySelector('#name');
+      const emailInput = document.querySelector('#email');
       const messageInput = document.querySelector('#message');
 
       // --- Validate each field ---

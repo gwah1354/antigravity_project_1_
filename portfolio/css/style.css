@@ -58,34 +58,50 @@
   /* rem = "relative to root element's font size" (usually 16px)
      So 1rem = 16px, 1.5rem = 24px, 2rem = 32px, etc.
      rem is better than px because it scales with user preferences. */
-  --font-size-xs: 0.75rem;    /* 12px */
-  --font-size-sm: 0.875rem;   /* 14px */
-  --font-size-base: 1rem;     /* 16px — the default body text size */
-  --font-size-lg: 1.125rem;   /* 18px */
-  --font-size-xl: 1.25rem;    /* 20px */
-  --font-size-2xl: 1.5rem;    /* 24px */
-  --font-size-3xl: 2rem;      /* 32px */
-  --font-size-4xl: 2.75rem;   /* 44px */
-  --font-size-5xl: 3.5rem;    /* 56px */
+  --font-size-xs: 0.75rem;
+  /* 12px */
+  --font-size-sm: 0.875rem;
+  /* 14px */
+  --font-size-base: 1rem;
+  /* 16px — the default body text size */
+  --font-size-lg: 1.125rem;
+  /* 18px */
+  --font-size-xl: 1.25rem;
+  /* 20px */
+  --font-size-2xl: 1.5rem;
+  /* 24px */
+  --font-size-3xl: 2rem;
+  /* 32px */
+  --font-size-4xl: 2.75rem;
+  /* 44px */
+  --font-size-5xl: 3.5rem;
+  /* 56px */
 
   /* --- Spacing --- */
   /* We use a consistent scale so spacing feels balanced */
-  --space-xs: 0.5rem;    /* 8px */
-  --space-sm: 1rem;      /* 16px */
-  --space-md: 1.5rem;    /* 24px */
-  --space-lg: 2rem;      /* 32px */
-  --space-xl: 3rem;      /* 48px */
-  --space-2xl: 5rem;     /* 80px */
+  --space-xs: 0.5rem;
+  /* 8px */
+  --space-sm: 1rem;
+  /* 16px */
+  --space-md: 1.5rem;
+  /* 24px */
+  --space-lg: 2rem;
+  /* 32px */
+  --space-xl: 3rem;
+  /* 48px */
+  --space-2xl: 5rem;
+  /* 80px */
 
   /* --- Borders & Radius --- */
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  --radius-full: 9999px; /* Pill/circle shape */
+  --radius-full: 9999px;
+  /* Pill/circle shape */
 
   /* --- Shadows --- */
   /* box-shadow: h-offset v-offset blur spread color */
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 20px rgba(108, 99, 255, 0.15);
   --shadow-lg: 0 8px 40px rgba(108, 99, 255, 0.25);
 
@@ -115,8 +131,10 @@
 
 /* The * selector means "select EVERY element on the page" */
 *,
-*::before,   /* ::before is a pseudo-element — a virtual element before each real element */
-*::after {   /* ::after is a virtual element after each real element */
+*::before,
+/* ::before is a pseudo-element — a virtual element before each real element */
+*::after {
+  /* ::after is a virtual element after each real element */
   /* box-sizing: border-box means padding and border are INCLUDED in the width/height.
      This is much easier to work with than the default (content-box). */
   box-sizing: border-box;
@@ -147,13 +165,16 @@ body {
 }
 
 /* Sensible defaults for media */
-img, video {
+img,
+video {
   max-width: 100%;
   display: block;
 }
 
 /* Remove bullet points from lists globally */
-ul { list-style: none; }
+ul {
+  list-style: none;
+}
 
 /* Remove underline from links, inherit the current text color */
 a {
@@ -162,7 +183,12 @@ a {
 }
 
 /* Make headings look good by default */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-text-light);
   font-weight: 700;
   line-height: 1.2;
@@ -179,7 +205,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Container: centers content and limits max width */
 .container {
   max-width: var(--max-width);
-  margin: 0 auto; /* auto on left+right = centered horizontally */
+  margin: 0 auto;
+  /* auto on left+right = centered horizontally */
   padding: var(--section-padding);
   width: 100%;
 }
@@ -203,7 +230,8 @@ section {
   font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-primary);
-  letter-spacing: 0.1em; /* Extra space between letters */
+  letter-spacing: 0.1em;
+  /* Extra space between letters */
   text-transform: uppercase;
   margin-bottom: var(--space-xs);
 }
@@ -220,7 +248,8 @@ section {
   /* A gradient going from primary to secondary color */
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   border-radius: var(--radius-full);
-  margin: 0 auto; /* Centered horizontally */
+  margin: 0 auto;
+  /* Centered horizontally */
 }
 
 
@@ -247,7 +276,8 @@ section {
   border: 2px solid transparent;
   /* transition applies smooth animation when the button is hovered/clicked */
   transition: all var(--transition-fast);
-  white-space: nowrap; /* Prevent text from wrapping onto two lines */
+  white-space: nowrap;
+  /* Prevent text from wrapping onto two lines */
 }
 
 .btn-primary {
@@ -322,20 +352,26 @@ section {
    in a row (or column). It's great for navigation bars!
    ============================================================ */
 .navbar {
-  position: fixed;      /* Stick to top of viewport */
+  position: fixed;
+  /* Stick to top of viewport */
   top: 0;
   left: 0;
-  right: 0;             /* Stretch full width */
+  right: 0;
+  /* Stretch full width */
   height: var(--navbar-height);
   /* Flexbox: lay out children in a row */
   display: flex;
-  align-items: center;        /* Center children vertically */
-  justify-content: space-between; /* Push brand left, links right */
+  align-items: center;
+  /* Center children vertically */
+  justify-content: space-between;
+  /* Push brand left, links right */
   padding: 0 var(--space-lg);
   /* glassmorphism effect: semi-transparent background + blur */
   background: rgba(13, 13, 26, 0.85);
-  backdrop-filter: blur(12px); /* Blurs whatever is behind the navbar */
-  -webkit-backdrop-filter: blur(12px); /* Safari prefix */
+  backdrop-filter: blur(12px);
+  /* Blurs whatever is behind the navbar */
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari prefix */
   border-bottom: 1px solid var(--color-border);
   /* z-index controls stacking order. Higher = on top of other elements */
   z-index: 1000;
@@ -365,7 +401,8 @@ section {
 /* The nav links list on the right */
 .nav-links {
   display: flex;
-  gap: var(--space-sm); /* Space between each list item */
+  gap: var(--space-sm);
+  /* Space between each list item */
   align-items: center;
 }
 
@@ -379,15 +416,18 @@ section {
 
 /* Underline that grows on hover using a ::after pseudo-element */
 .nav-link::after {
-  content: '';    /* pseudo-elements need content, even if empty */
+  content: '';
+  /* pseudo-elements need content, even if empty */
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 0;       /* starts with zero width (invisible) */
+  width: 0;
+  /* starts with zero width (invisible) */
   height: 2px;
   background: var(--color-primary);
   border-radius: var(--radius-full);
-  transition: width var(--transition-fast); /* animates the width change */
+  transition: width var(--transition-fast);
+  /* animates the width change */
 }
 
 .nav-link:hover {
@@ -403,6 +443,7 @@ section {
 .nav-link.active {
   color: var(--color-primary);
 }
+
 .nav-link.active::after {
   width: 100%;
 }
@@ -411,7 +452,8 @@ section {
    Hidden on desktop, shown on mobile.
    It's three <span class="bar"> elements that look like ≡ */
 .hamburger {
-  display: none; /* Hidden by default (on desktop) */
+  display: none;
+  /* Hidden by default (on desktop) */
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -434,9 +476,12 @@ section {
 .hamburger.open .bar:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .hamburger.open .bar:nth-child(2) {
-  opacity: 0; /* Hide the middle bar */
+  opacity: 0;
+  /* Hide the middle bar */
 }
+
 .hamburger.open .bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -472,11 +517,13 @@ section {
   top: -100px;
   right: -100px;
   border-radius: 50%;
-  pointer-events: none; /* Don't block clicks */
+  pointer-events: none;
+  /* Don't block clicks */
 }
 
 .hero-content {
-  flex: 1; /* Grows to take up available space */
+  flex: 1;
+  /* Grows to take up available space */
   max-width: 600px;
 }
 
@@ -516,7 +563,8 @@ section {
 .hero-buttons {
   display: flex;
   gap: var(--space-sm);
-  flex-wrap: wrap; /* Wrap to next line on small screens */
+  flex-wrap: wrap;
+  /* Wrap to next line on small screens */
 }
 
 /* === Hero Visual (right side circles and floating cards) === */
@@ -528,14 +576,15 @@ section {
   position: relative;
   width: 380px;
   height: 380px;
-  flex-shrink: 0; /* Prevent it from shrinking */
+  flex-shrink: 0;
+  /* Prevent it from shrinking */
 }
 
 .hero-circle {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(108,99,255,0.25), rgba(255,101,132,0.15));
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.25), rgba(255, 101, 132, 0.15));
   border: 2px solid var(--color-border);
   /* animation: name duration timing-function iteration */
   animation: pulse 4s ease-in-out infinite;
@@ -543,8 +592,18 @@ section {
 
 /* @keyframes defines the animation steps */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }     /* Start and end: normal size */
-  50% { transform: scale(1.05); }        /* Midpoint: slightly bigger */
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  /* Start and end: normal size */
+  50% {
+    transform: scale(1.05);
+  }
+
+  /* Midpoint: slightly bigger */
 }
 
 /* Floating technology label badges around the circle */
@@ -564,13 +623,36 @@ section {
 
 /* Each card starts its animation at a different time (animation-delay)
    so they don't all move in sync — looks more natural */
-.card-1 { top: 10%; right: 5%;   animation-delay: 0s; }
-.card-2 { bottom: 15%; left: 5%; animation-delay: 1s; }
-.card-3 { top: 55%; right: 0;    animation-delay: 0.5s; }
+.card-1 {
+  top: 10%;
+  right: 5%;
+  animation-delay: 0s;
+}
+
+.card-2 {
+  bottom: 15%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.card-3 {
+  top: 55%;
+  right: 0;
+  animation-delay: 0.5s;
+}
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); } /* Move 12px up */
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  /* Move 12px up */
 }
 
 
@@ -631,19 +713,28 @@ section {
 
 .skill-header {
   display: flex;
-  justify-content: space-between; /* Name on left, percent on right */
+  justify-content: space-between;
+  /* Name on left, percent on right */
   margin-bottom: 0.4rem;
 }
 
-.skill-name { color: var(--color-text); font-weight: 600; }
-.skill-percent { color: var(--color-primary); font-weight: 600; }
+.skill-name {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.skill-percent {
+  color: var(--color-primary);
+  font-weight: 600;
+}
 
 /* The grey track behind the skill bar */
 .skill-bar {
   height: 8px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
-  overflow: hidden; /* Clip the fill inside */
+  overflow: hidden;
+  /* Clip the fill inside */
 }
 
 /* The colored fill bar. Starts at width: 0, animated by JavaScript */
@@ -651,15 +742,19 @@ section {
   height: 100%;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   border-radius: var(--radius-full);
-  width: 0; /* JavaScript will animate this to data-level% */
-  transition: width 1.2s ease; /* The smooth animation */
+  width: 0;
+  /* JavaScript will animate this to data-level% */
+  transition: width 1.2s ease;
+  /* The smooth animation */
 }
 
 
 /* ============================================================
    SECTION 7: PROJECTS SECTION
    ============================================================ */
-.projects { /* slight background variation */ }
+.projects {
+  /* slight background variation */
+}
 
 /* CSS Grid auto-sizes columns: each is AT LEAST 280px wide,
    and they grow to fill the row equally (1fr each).
@@ -683,20 +778,23 @@ section {
 }
 
 .project-card:hover {
-  transform: translateY(-6px); /* Lift the card on hover */
+  transform: translateY(-6px);
+  /* Lift the card on hover */
   box-shadow: var(--shadow-lg);
 }
 
 .project-card-top {
   padding: var(--space-md);
-  background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(255,101,132,0.05));
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(255, 101, 132, 0.05));
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-border);
 }
 
-.project-icon { font-size: 2rem; }
+.project-icon {
+  font-size: 2rem;
+}
 
 .project-tags {
   display: flex;
@@ -768,7 +866,8 @@ section {
 
 .contact-icon {
   font-size: 1.5rem;
-  flex-shrink: 0; /* Don't let icon shrink */
+  flex-shrink: 0;
+  /* Don't let icon shrink */
   margin-top: 0.1rem;
 }
 
@@ -810,8 +909,9 @@ label {
 }
 
 /* Style both <input> and <textarea> the same way */
-input, textarea {
-  background: rgba(255,255,255,0.05);
+input,
+textarea {
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 0.85rem 1rem;
@@ -824,14 +924,17 @@ input, textarea {
 }
 
 /* :focus applies styles when the element is selected/clicked */
-input:focus, textarea:focus {
-  outline: none; /* Remove default ugly browser outline */
+input:focus,
+textarea:focus {
+  outline: none;
+  /* Remove default ugly browser outline */
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
 }
 
 /* Input placeholder text styling */
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: var(--color-text-muted);
 }
 
@@ -839,7 +942,8 @@ input::placeholder, textarea::placeholder {
 .form-error {
   font-size: var(--font-size-xs);
   color: var(--color-secondary);
-  min-height: 1rem; /* Reserve space so layout doesn't jump */
+  min-height: 1rem;
+  /* Reserve space so layout doesn't jump */
 }
 
 /* Form submission feedback */
@@ -855,16 +959,16 @@ input::placeholder, textarea::placeholder {
 
 .form-feedback.success {
   display: block;
-  background: rgba(108,255,150,0.1);
+  background: rgba(108, 255, 150, 0.1);
   color: #6bffb8;
-  border: 1px solid rgba(108,255,150,0.3);
+  border: 1px solid rgba(108, 255, 150, 0.3);
 }
 
 .form-feedback.error {
   display: block;
-  background: rgba(255,101,132,0.1);
+  background: rgba(255, 101, 132, 0.1);
   color: var(--color-secondary);
-  border: 1px solid rgba(255,101,132,0.3);
+  border: 1px solid rgba(255, 101, 132, 0.3);
 }
 
 
@@ -927,6 +1031,7 @@ input::placeholder, textarea::placeholder {
 
 /* --- TABLET (768px and below) --- */
 @media (max-width: 768px) {
+
   /* Show hamburger button */
   .hamburger {
     display: flex;
@@ -934,13 +1039,15 @@ input::placeholder, textarea::placeholder {
 
   /* Change nav-links from a horizontal row to a vertical dropdown menu */
   .nav-links {
-    position: fixed;          /* Fixed position, outside normal flow */
+    position: fixed;
+    /* Fixed position, outside normal flow */
     top: var(--navbar-height);
     left: 0;
     right: 0;
     background: rgba(13, 13, 26, 0.98);
     backdrop-filter: blur(12px);
-    flex-direction: column;   /* Vertical instead of horizontal */
+    flex-direction: column;
+    /* Vertical instead of horizontal */
     padding: var(--space-lg);
     gap: var(--space-sm);
     border-bottom: 1px solid var(--color-border);
@@ -952,7 +1059,8 @@ input::placeholder, textarea::placeholder {
 
   /* JavaScript adds .open to show the mobile menu */
   .nav-links.open {
-    transform: translateY(0); /* Slide into view */
+    transform: translateY(0);
+    /* Slide into view */
   }
 
   /* Hero: stack vertically instead of side by side */
@@ -965,10 +1073,17 @@ input::placeholder, textarea::placeholder {
   }
 
   /* Hide the visual circle on mobile — save space */
-  .hero-visual { display: none; }
+  .hero-visual {
+    display: none;
+  }
 
-  .hero-name { font-size: var(--font-size-4xl); }
-  .hero-buttons { justify-content: center; }
+  .hero-name {
+    font-size: var(--font-size-4xl);
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
 
   /* About: single column on mobile */
   .about-content {
@@ -990,8 +1105,20 @@ input::placeholder, textarea::placeholder {
 
 /* --- SMALL PHONE (480px and below) --- */
 @media (max-width: 480px) {
-  .hero-name { font-size: var(--font-size-3xl); }
-  .hero-description { font-size: var(--font-size-base); }
-  .hero-buttons { flex-direction: column; }
-  .btn { width: 100%; justify-content: center; }
+  .hero-name {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-base);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
